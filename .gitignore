@@ -11,3 +11,7 @@ test/output/
 *.bai
 *.gz
 /dist/
+
+*.log
+log
+/notes/
