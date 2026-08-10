@@ -1,7 +1,6 @@
 #! /usr/bin/env python3
 
 import sys
-import argparse
 import os, glob, math
 import pipettor, subprocess
 import pysam
@@ -9,6 +8,7 @@ os.environ['OPENBLAS_NUM_THREADS'] = '1'
 import numpy as np
 import shutil
 from flair import FlairInputDataError
+from flair.pycbio.sys import cli
 
 compbase = {'A':'T', 'T':'A', 'C':'G', 'G':'C', 'N':'N'}
 
@@ -102,7 +102,7 @@ def translate(seq):
     return protein
 
 def parse_args():
-    parser = argparse.ArgumentParser()
+    parser = cli.ArgumentParser()
     parser.add_argument('-m', '--manifest', required=True, type=str,
                         help="path to manifest files that points to sample names + bam files aligned to transcriptome. Each line of file should be tab separated.")
     parser.add_argument('-o', '--output_prefix', default='flair',

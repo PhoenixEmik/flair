@@ -1,7 +1,6 @@
 #! /usr/bin/env python3
 
 import sys
-import argparse
 import os
 import tempfile
 import glob
@@ -22,12 +21,13 @@ from flair.bed_to_gtf import bed_to_gtf
 from flair.subset_unassigned_reads import subset_unassigned_reads
 from flair.filter_isoforms_by_proportion_of_gene_expr import filter_isoforms_by_proportion_of_gene_expr
 from flair import FlairInputDataError
+from flair.pycbio.sys import cli
 
 run_id = 'removeme'
 # TODO: do not redefine args variables, it breaks your head.
 
 def collapse(genomic_range='', corrected_reads=''):
-    parser = argparse.ArgumentParser(description='take bed file of corrected reads and generate confident collapsed isoform models')
+    parser = cli.ArgumentParser(description='take bed file of corrected reads and generate confident collapsed isoform models')
     required = parser.add_argument_group('required named arguments')
     if not corrected_reads:
         required.add_argument('-q', '--query', type=str, default='', required=True,

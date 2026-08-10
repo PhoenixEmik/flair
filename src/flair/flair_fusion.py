@@ -1,7 +1,6 @@
 #! /usr/bin/env python3
 
 import sys
-import argparse
 import os, glob
 import pipettor
 import pysam
@@ -14,6 +13,7 @@ from flair import transcriptomic_chimeras
 from flair import genomic_chimeras
 from collections import defaultdict
 from flair import FlairInputDataError
+from flair.pycbio.sys import cli
 
 
 def def_value():
@@ -26,7 +26,7 @@ def report_nofusions(outputprefix):
         f.close()
 
 def detectfusions():
-    parser = argparse.ArgumentParser()
+    parser = cli.ArgumentParser()
     required = parser.add_argument_group('required named arguments')
     required.add_argument('-g', '--genome',
                           type=str, required=True, help='FastA of reference genome')

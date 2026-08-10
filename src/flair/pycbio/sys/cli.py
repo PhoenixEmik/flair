@@ -2,11 +2,44 @@
 """Support for command line parsing"""
 import argparse
 import logging
+import re
 import traceback
 from io import StringIO
 from flair.pycbio import NoStackError
 from flair.pycbio.sys.objDict import ObjDict
 from flair.pycbio.sys import loggingOps
+
+
+class HelpFormatter(argparse.HelpFormatter):
+    """Keep option metavars stable across supported Python versions."""
+
+    def _get_actions_usage_parts(self, actions, groups):
+        parts = super()._get_actions_usage_parts(actions, groups)
+        usage = ' '.join(parts)
+        return re.findall(r'\(.*?\)+(?=\s|$)|\[.*?\]+(?=\s|$)|\S+', usage)
+
+    def _format_action_invocation(self, action):
+        if not action.option_strings:
+            default = self._get_default_metavar_for_positional(action)
+            metavar, = self._metavar_formatter(action, default)(1)
+            return metavar
+
+        if action.nargs == 0:
+            return ', '.join(action.option_strings)
+
+        default = self._get_default_metavar_for_optional(action)
+        args_string = self._format_args(action, default)
+        return ', '.join(f'{option_string} {args_string}'
+                         for option_string in action.option_strings)
+
+
+class ArgumentParser(argparse.ArgumentParser):
+    """Argument parser with help output stable across Python versions."""
+
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('formatter_class', HelpFormatter)
+        super().__init__(*args, **kwargs)
+
 
 def splitOptionsArgs(parser, inargs):
     """Split command line arguments into two objects one of option arguments
@@ -24,7 +57,7 @@ def splitOptionsArgs(parser, inargs):
             args[name] = value
     return opts, args
 
-class ArgumentParserExtras(argparse.ArgumentParser):
+class ArgumentParserExtras(ArgumentParser):
     """Wrapper around ArgumentParser that adds logging
     related options.  Also can parse splitting options and positional
     arguments into separate objects.

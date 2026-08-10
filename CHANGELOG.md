@@ -4,6 +4,7 @@
 * General
   * fixed problems with some diffsplice_fishers_exact, and other
     auxiliary console script installs
+  * Added support for Python 3.13 and 3.14.
 
 ## [v3.0.0] 2025-11-31
 * General

@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import os
-import argparse
 os.environ['OPENBLAS_NUM_THREADS'] = '1'
 import numpy as np
 import matplotlib
@@ -10,13 +9,14 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mplpatches
 import matplotlib.colors as mcolors
 from flair import FlairInputDataError
+from flair.pycbio.sys import cli
 
 def parse_args():
     desc = '''The script will produce two images, one of the isoform models and another of the usage proportions.
     The most highly expressed isoforms across all the samples will be plotted.
     The minor isoforms are aggregated into a gray bar. You can toggle min_reads or
     color_palette to plot more isoforms.'''
-    parser = argparse.ArgumentParser(description=desc)
+    parser = cli.ArgumentParser(description=desc)
     parser.add_argument('isoforms', type=str, action='store',
                         help='isoforms in bed format')
     parser.add_argument('counts_matrix', type=str, action='store',

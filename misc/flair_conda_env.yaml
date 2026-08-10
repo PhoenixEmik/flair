@@ -4,7 +4,8 @@ channels:
   - bioconda
   - conda
 
-# not yet tested with 3.13
+# FLAIR supports Python 3.12 through 3.14. Keep the reference environment on
+# the oldest supported version.
 dependencies:
   - python =3.12
   - minimap2 =2.30

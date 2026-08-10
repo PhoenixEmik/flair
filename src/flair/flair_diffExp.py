@@ -15,7 +15,6 @@
 import os
 import os.path as osp
 import sys
-import argparse
 import errno
 import csv
 from collections import Counter
@@ -23,6 +22,7 @@ from scipy.stats import ttest_ind
 from statistics import median, mean
 import pipettor
 import numpy as np
+from flair.pycbio.sys import cli
 
 from flair import FlairError, FlairInputDataError, set_unix_path
 
@@ -396,7 +396,7 @@ def calculate_sig(args):
 
 def diffExp(counts_matrix=''):
     set_unix_path()
-    parser = argparse.ArgumentParser()
+    parser = cli.ArgumentParser()
 #       parser.add_argument('diffExp')
     required = parser.add_argument_group('required named arguments')
     if not counts_matrix:

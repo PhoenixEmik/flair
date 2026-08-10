@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import argparse
 import sys
 import multiprocessing as mp
 import os
@@ -10,11 +9,12 @@ import pipettor
 from flair.ssUtils import addOtherJuncs, gtfToSSBed
 from flair.ssPrep import ssPrep
 from flair import FlairInputDataError
+from flair.pycbio.sys import cli
 
 import logging
 
 def parseargs(aligned_reads=''):
-    parser = argparse.ArgumentParser(description='take bed file of long RNA-seq reads and filter out those with anomalous splice junctions' \
+    parser = cli.ArgumentParser(description='take bed file of long RNA-seq reads and filter out those with anomalous splice junctions' \
                                      ' correct remaining to nearest orthogonally supported splice site')
     required = parser.add_argument_group('required named arguments')
     atleastone = parser.add_argument_group('at least one of the following arguments is required')

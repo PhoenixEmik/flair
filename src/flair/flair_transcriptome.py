@@ -1,7 +1,6 @@
 #! /usr/bin/env python3
 
 import sys
-import argparse
 import os
 import pipettor
 import glob
@@ -16,12 +15,13 @@ import multiprocessing as mp
 import time
 from collections import Counter
 from flair import FlairInputDataError
+from flair.pycbio.sys import cli
 
 
 # export PATH="/private/groups/brookslab/cafelton/git-flair/flair/bin:/private/groups/brookslab/cafelton/git-flair/flair/src/flair:$PATH"
 
 def get_args():
-    parser = argparse.ArgumentParser()
+    parser = cli.ArgumentParser()
     parser.add_argument('-b', '--genomealignedbam',
                         help='Sorted and indexed bam file aligned to the genome')
     parser.add_argument('-g', '--genome', type=str,

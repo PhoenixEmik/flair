@@ -1,12 +1,12 @@
 #! /usr/bin/env python3
 
 import sys
-import argparse
 import os
 import os.path as osp
 import pipettor
 import logging
 from flair import FlairError, set_unix_path, FlairInputDataError
+from flair.pycbio.sys import cli
 
 pkgdir = osp.dirname(osp.realpath(__file__))
 diffSplice_drimSeq = osp.join(pkgdir, "diffSplice_drimSeq.R")
@@ -16,7 +16,7 @@ diffSplice_drimSeq = osp.join(pkgdir, "diffSplice_drimSeq.R")
 
 def diffSplice(isoforms='', counts_matrix=''):
     set_unix_path()
-    parser = argparse.ArgumentParser()
+    parser = cli.ArgumentParser()
     required = parser.add_argument_group('required named arguments')
     if not isoforms:
         required.add_argument('-i', '--isoforms', action='store', required=True,

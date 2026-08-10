@@ -21,6 +21,7 @@ import sys
 import pipettor
 import os
 from flair import FlairInputDataError
+from flair.pycbio.sys import cli
 ########################################################################
 # CommandLine
 ########################################################################
@@ -45,8 +46,7 @@ class CommandLine(object):
         CommandLine constructor.
         Implements a parser to interpret the command line argv string using argparse.
         '''
-        import argparse
-        self.parser = argparse.ArgumentParser(description=' predictProductivity - a tool.')
+        self.parser = cli.ArgumentParser(description=' predictProductivity - a tool.')
         # Add args
         self.parser.add_argument('-i', "--input_isoforms", action='store', required=True, help='Input collapsed isoforms in bed12 format.')
         self.parser.add_argument('-g', "--gtf", action='store', required=True, help='Gencode annotation file.')

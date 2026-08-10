@@ -2043,5 +2043,5 @@ dev = ["bump-my-version", "flake8", "sphinx", "sphinx-rtd-theme"]
 
 [metadata]
 lock-version = "2.1"
-python-versions = ">=3.12,<3.13"
-content-hash = "2c0363d757c9426d61906182e4d4a23c018ededda1bb665c9c6946e213329538"
+python-versions = ">=3.12,<3.15"
+content-hash = "80fed548604cc44cdd5cd037067ff1a10f3cf3396bd583482c835443ef2f2d6f"
