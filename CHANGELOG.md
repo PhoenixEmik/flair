@@ -23,7 +23,7 @@
   * removed the stale note that the protocol applies only to a GitHub master
     checkout
 
-## [v3.0.0] 2025-11-31
+## [v3.0.0] 2026-01-30
 * General
   * Bug fixes since v3.0.0b1
 
