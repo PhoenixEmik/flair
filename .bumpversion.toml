@@ -60,13 +60,18 @@ filename = "misc/flair_diffexp_conda_env.yaml"
 search = "flair-brookslab[diffexp]==v{current_version}"
 replace = "flair-brookslab[diffexp]==v{new_version}"
 
+# The installing.rst URLs name a published release, so they must never carry
+# the +branch suffix that the tree version gets between releases.  These two
+# serialize without the branch part; a `bump branch` then leaves them alone.
 [[tool.bumpversion.files]]
 filename = "docs/source/installing.rst"
+serialize = ["{major}.{minor}.{patch}{release}{build}", "{major}.{minor}.{patch}"]
 search = "download/v{current_version}/"
 replace = "download/v{new_version}/"
 
 [[tool.bumpversion.files]]
 filename = "docs/source/installing.rst"
+serialize = ["{major}.{minor}.{patch}{release}{build}", "{major}.{minor}.{patch}"]
 search = "/flair:{current_version}"
 replace = "/flair:{new_version}"
 
