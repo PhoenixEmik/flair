@@ -8,9 +8,9 @@ single transcriptome. A stringent, full-read-match-based approach
 
 options:
   -h, --help            show this help message and exit
-  -o O, --output O      output file name base for FLAIR quantify (default:
+  -o, --output O        output file name base for FLAIR quantify (default:
                         flair.quantify)
-  -t T, --threads T     minimap2 number of threads (4)
+  -t, --threads T       minimap2 number of threads (4)
   --temp_dir TEMP_DIR   directory to put temporary files. use './" to indicate
                         current directory (default: python tempfile directory)
   --sample_id_only      only use sample id in output header
@@ -21,7 +21,7 @@ options:
                         with minimal fragmentation
   --generate_map        create read-to-isoform assignment files for each
                         sample (default: not specified)
-  --isoform_bed ISOFORMS, --isoformbed ISOFORMS
+  --isoform_bed, --isoformbed ISOFORMS
                         isoform .bed file, must be specified if --stringent or
                         check_splice is specified
   --stringent           Supporting reads must cover 80 percent of their
@@ -36,7 +36,7 @@ options:
                         isoforms
 
 required named arguments:
-  -r R, --reads_manifest R
+  -r, --reads_manifest R
                         Tab delimited file containing sample id, condition,
                         batch, reads.fq
-  -i I, --isoforms I    FastA of FLAIR collapsed isoforms
+  -i, --isoforms I      FastA of FLAIR collapsed isoforms

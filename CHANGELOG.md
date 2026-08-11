@@ -1,9 +1,27 @@
 # Major user-visible changes
 
-## [next]
+## [v3.0.1]
 * General
   * fixed problems with some diffsplice_fishers_exact, and other
     auxiliary console script installs
+  * dropped the `mark_productivity` console script and the `bin/bam2Bed12`
+    and `bin/mark_productivity` links, which were never functional
+  * supported Python versions widened from 3.12 only to 3.12 through 3.14,
+    in both the pip and Conda installs.  The expected files for the `--help`
+    tests are now generated with Python 3.13, so those tests fail on 3.12
+* FLAIR collapse
+  * worked around `--remove_internal_priming` failing when applied during the
+    transcriptome alignment phase (#629)
+* FLAIR combine
+  * error out with a clear message when the manifest contains no samples
+  * added debug logging of sample, intron-chain and final isoform counts
+* Documentation
+  * new FLAIR pipeline figure on the main page; the compartmentalized workflow
+    figure moved to the modules page
+  * fixed figures mangled by the conversion to SVG and a bad margin
+  * removed the obsolete FLAIR2 functions page
+  * removed the stale note that the protocol applies only to a GitHub master
+    checkout
 
 ## [v3.0.0] 2025-11-31
 * General

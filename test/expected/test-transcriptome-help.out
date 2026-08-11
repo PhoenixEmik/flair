@@ -1,6 +1,6 @@
 usage: transcriptome [-h] [-b GENOMEALIGNEDBAM] [-g GENOME] [-o OUTPUT]
-                     [-t THREADS] [-f GTF]
-                     [--junction_tab JUNCTION_TAB | --junction_bed JUNCTION_BED]
+                     [-t THREADS] [-f GTF] [--junction_tab JUNCTION_TAB |
+                     --junction_bed JUNCTION_BED]
                      [--junction_support JUNCTION_SUPPORT]
                      [--ss_window SS_WINDOW] [-s SUPPORT] [--stringent]
                      [--check_splice] [-w END_WINDOW] [--noaligntoannot]
@@ -10,16 +10,14 @@ usage: transcriptome [-h] [-b GENOMEALIGNEDBAM] [-g GENOME] [-o OUTPUT]
 
 options:
   -h, --help            show this help message and exit
-  -b GENOMEALIGNEDBAM, --genomealignedbam GENOMEALIGNEDBAM
+  -b, --genomealignedbam GENOMEALIGNEDBAM
                         Sorted and indexed bam file aligned to the genome
-  -g GENOME, --genome GENOME
-                        FastA of reference genome, can be minimap2 indexed
-  -o OUTPUT, --output OUTPUT
-                        output file name base for FLAIR isoforms (default:
+  -g, --genome GENOME   FastA of reference genome, can be minimap2 indexed
+  -o, --output OUTPUT   output file name base for FLAIR isoforms (default:
                         flair)
-  -t THREADS, --threads THREADS
+  -t, --threads THREADS
                         minimap2 number of threads (4)
-  -f GTF, --gtf GTF     GTF annotation file, used for renaming FLAIR isoforms
+  -f, --gtf GTF         GTF annotation file, used for renaming FLAIR isoforms
                         to annotated isoforms and adjusting TSS/TESs
   --junction_tab JUNCTION_TAB
                         short-read junctions in SJ.out.tab format. Use this
@@ -35,21 +33,21 @@ options:
                         for read support.
   --ss_window SS_WINDOW
                         window size for correcting splice sites (15)
-  -s SUPPORT, --support SUPPORT
+  -s, --support SUPPORT
                         minimum number of supporting reads for an isoform (3)
   --stringent           specify if all supporting reads need to be full-length
                         (spanning 25 bp of the first and last exons)
   --check_splice        enforce coverage of 4 out of 6 bp around each splice
                         site and no insertions greater than 3 bp at the splice
                         site
-  -w END_WINDOW, --end_window END_WINDOW
+  -w, --end_window END_WINDOW
                         window size for comparing TSS/TES (100)
   --noaligntoannot      related to old annotation_reliant, now specify if you
                         don't want an initial alignment to the annotated
                         sequences and only want transcript detection from the
                         genomic alignment. Will be slightly faster but less
                         accurate if the annotation is good
-  -n NO_REDUNDANT, --no_redundant NO_REDUNDANT
+  -n, --no_redundant NO_REDUNDANT
                         For each unique splice junction chain, report options
                         include: none--best TSSs/TESs chosen for each unique
                         set of splice junctions; longest--single TSS/TES

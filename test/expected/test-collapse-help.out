@@ -19,12 +19,11 @@ models
 
 options:
   -h, --help            show this help message and exit
-  -o OUTPUT, --output OUTPUT
-                        output file name base for FLAIR isoforms (default:
+  -o, --output OUTPUT   output file name base for FLAIR isoforms (default:
                         flair.collapse)
-  -t THREADS, --threads THREADS
+  -t, --threads THREADS
                         minimap2 number of threads (4)
-  -f GTF, --gtf GTF     GTF annotation file, used for renaming FLAIR isoforms
+  -f, --gtf GTF         GTF annotation file, used for renaming FLAIR isoforms
                         to annotated isoforms and adjusting TSS/TESs
   --generate_map        specify this argument to generate a txt file of read-
                         isoform assignments (default: not specified)
@@ -34,7 +33,7 @@ options:
                         flair collapse; to ask flair to make transcript
                         sequences given the gtf and genome fa, type
                         --annotation_reliant generate
-  -s SUPPORT, --support SUPPORT
+  -s, --support SUPPORT
                         minimum number of supporting reads for an isoform; if
                         s < 1, it will be treated as a percentage of
                         expression of the gene (3)
@@ -52,14 +51,14 @@ options:
                         each read
   --longshot_vcf LONGSHOT_VCF
                         vcf from longshot
-  -w END_WINDOW, --end_window END_WINDOW
+  -w, --end_window END_WINDOW
                         window size for comparing TSS/TES (100)
-  -p PROMOTERS, --promoters PROMOTERS
+  -p, --promoters PROMOTERS
                         promoter regions bed file to identify full-length
                         reads
   --3prime_regions THREEPRIME
                         TES regions bed file to identify full-length reads
-  -n NO_REDUNDANT, --no_redundant NO_REDUNDANT
+  -n, --no_redundant NO_REDUNDANT
                         For each unique splice junction chain, report options
                         include: none--best TSSs/TESs chosen for each unique
                         set of splice junctions; longest--single TSS/TES
@@ -114,10 +113,8 @@ options:
                         predictProductivity documentation
 
 required named arguments:
-  -q QUERY, --query QUERY
-                        bed file of aligned/corrected reads
-  -g GENOME, --genome GENOME
-                        FastA of reference genome
-  -r READS [READS ...], --reads READS [READS ...]
+  -q, --query QUERY     bed file of aligned/corrected reads
+  -g, --genome GENOME   FastA of reference genome
+  -r, --reads READS [READS ...]
                         FastA/FastQ files of raw reads, can specify multiple
                         files

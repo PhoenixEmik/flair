@@ -3,9 +3,9 @@ usage: diffexp [-h] -q COUNTS_MATRIX -o OUT_DIR [-t THREADS] [-e EXP_THRESH]
 
 options:
   -h, --help            show this help message and exit
-  -t THREADS, --threads THREADS
+  -t, --threads THREADS
                         Number of threads for parallel DRIMSeq.
-  -e EXP_THRESH, --exp_thresh EXP_THRESH
+  -e, --exp_thresh EXP_THRESH
                         Read count expression threshold. Isoforms in which
                         both conditions contain fewer than E reads are
                         filtered out (Default E=10)
@@ -13,8 +13,8 @@ options:
                         an existing output directory
 
 required named arguments:
-  -q COUNTS_MATRIX, --counts_matrix COUNTS_MATRIX
+  -q, --counts_matrix COUNTS_MATRIX
                         Tab-delimited isoform count matrix from flair quantify
                         module.
-  -o OUT_DIR, --out_dir OUT_DIR
+  -o, --out_dir OUT_DIR
                         Output directory for tables and plots.

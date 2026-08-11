@@ -66,7 +66,7 @@ lock file servers only serves as a reference due to Conda issues.
 
 The `poetry update` to install to update the dependencies list.  Conda has
 problems with incorrectly creating `direct_url.json` files for dependencies
-`flair-dev/lib/python3.12/site-packages/* dist-info/direct_url.json`.
+`flair-dev/lib/python3.*/site-packages/* dist-info/direct_url.json`.
 Remove these files and `poetry update` will work
 
 ## Testing:

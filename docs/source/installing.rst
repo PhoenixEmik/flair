@@ -68,6 +68,8 @@ FLAIR Docker with:
 Pip install
 ~~~~~~~~~~~
 
+FLAIR requires Python 3.12, 3.13 or 3.14.
+
 To install with pip, you must first install these packages. This can be done
 with Conda, yes system package manager or by downloading and compiling,
 

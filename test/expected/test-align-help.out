@@ -14,9 +14,8 @@ the downstream pipeline
 
 options:
   -h, --help            show this help message and exit
-  -o OUTPUT, --output OUTPUT
-                        output file name base (default: flair.aligned)
-  -t THREADS, --threads THREADS
+  -o, --output OUTPUT   output file name base (default: flair.aligned)
+  -t, --threads THREADS
                         minimap2 number of threads (4)
   --junction_bed JUNCTION_BED
                         annotated isoforms/junctions bed file for splice site-
@@ -40,7 +39,7 @@ options:
                         printed
   --remove_internal_priming
                         specify if want to remove reads with internal priming
-  -f GTF, --gtf GTF     reference annotation, only used if
+  -f, --gtf GTF         reference annotation, only used if
                         --remove_internal_priming is specified, recommended if
                         so
   --intprimingthreshold INTPRIMINGTHRESHOLD
@@ -61,11 +60,10 @@ options:
                         level=DEBUG
 
 required named arguments:
-  -r READS [READS ...], --reads READS [READS ...]
+  -r, --reads READS [READS ...]
                         FASTA/FASTQ file(s) of raw reads, either space or
                         comma separated
 
 Either one of the following arguments is required:
-  -g GENOME, --genome GENOME
-                        FASTA of reference genome, can be minimap2 indexed
+  -g, --genome GENOME   FASTA of reference genome, can be minimap2 indexed
   --mm_index MM_INDEX   minimap2 index .mmi file

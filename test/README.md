@@ -41,5 +41,11 @@ make: *** [makefile:71: test-predict-productivity] Error 2
 You can usually find more information in the lines preceding the error. If you cannot figure out the problem, please 
 [create a ticket](https://github.com/BrooksLabUCSC/flair/issues).
 
+The `test-*-help` targets fail on Python 3.12.  The expected files are
+generated with Python 3.13, where argparse stopped repeating the metavar on
+the short form of an option, printing `-o, --output OUTPUT` where 3.12 printed
+`-o OUTPUT, --output OUTPUT`.  Only the help formatting differs; all other
+tests pass on 3.12.
+
 
 
