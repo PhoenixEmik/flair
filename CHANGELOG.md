@@ -1,6 +1,6 @@
 # Major user-visible changes
 
-## [v3.0.1]
+## [v3.0.1] 2026-08-10
 * General
   * fixed problems with some diffsplice_fishers_exact, and other
     auxiliary console script installs

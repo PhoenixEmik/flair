@@ -47,6 +47,9 @@ minor changes.  Review the commit logs with:
 git log v2.0.0..HEAD --pretty=format:"%h %an: %s"
 ```
 
+The section heading is the version then the release date in ISO format, as in
+`## [v3.0.1] 2026-08-10`.  Set the date here, before the release is tagged.
+
 Copyrights are needed in:
 
 - `LICENSE`
