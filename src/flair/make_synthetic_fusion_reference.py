@@ -3,6 +3,7 @@ from statistics import median,stdev
 from datetime import date
 import itertools
 import pysam
+from flair import FlairInputDataError
 
 parser = argparse.ArgumentParser(description='make synthetic fusion reference')
 parser.add_argument('-c', '--chimbp', action='store', help='bed file of fusion breakpoints')
@@ -47,7 +48,16 @@ for line in open(args.chimbp):#'31-01-2023DRR059313-transcriptomeChimericBreakpo
         fgenes[gene][2] = max(end, fgenes[gene][2])
 
 genome=pysam.FastaFile(args.g)
+chromSizes = dict(zip(genome.references, genome.lengths))
 print('loaded genome')
+
+def getChromSize(chrom):
+    "size of chrom, error if the annotation names a sequence the genome doesn't have"
+    size = chromSizes.get(chrom)
+    if size is None:
+        raise FlairInputDataError(f"sequence '{chrom}' in annotation {args.a} is not in genome {args.g}; "
+                                  "supply an annotation and genome from the same assembly, using the same sequence names")
+    return size
 
 ####To make synthetic transcriptome:
 ####DONE Get transcript/exon annotation for fusion genes
@@ -67,7 +77,11 @@ for line in open(args.a):#'/private/groups/brookslab/reference_annotations/genco
             if genename in fgenes:
                 if line[2] == 'gene':
                     ###learned that can't assume that transcript appears in anno only once - two diff ENSG can have same hugo name
-                    fgenes[genename] = (line[0], min([int(line[3]) - 501, fgenes[genename][1]]), max([int(line[4])+500, fgenes[genename][2]]), line[6])
+                    ###the 500 base padding is held within the sequence; a gene near either end has less room than that
+                    fgenes[genename] = (line[0],
+                                        min([max(0, int(line[3]) - 501), fgenes[genename][1]]),
+                                        max([min(getChromSize(line[0]), int(line[4]) + 500), fgenes[genename][2]]),
+                                        line[6])
                 elif line[2] == 'exon' or line[2] == 'start_codon':
                     tname = line[8].split('transcript_id "')[1].split('"')[0]
                     if tname not in transcripts[genename]: transcripts[genename][tname] = []
